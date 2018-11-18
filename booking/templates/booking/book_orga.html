@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'css/style.css'%}" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <style>
+        body, html {
+            height: 100%;
+        }
+        .p-lax{
+            background-image:url('{{ static }}/../static/images/rdr2.png');
+            height: 100%;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+    </style>
+</head>
+<body>
+    <div class="p-lax">
+    </div>
+    <div class="container width-50" style="width:40%" id="sec02">
+    <b><h2> Please Fill out the form for Booking </h2></b><br>
+    <form action="{% url 'booking:con_orga' %}" method="POST" >
+        {% csrf_token %}
+        <h4>{{ form|crispy }}</h4><br>
+        <input type="submit" value="Book Now" class="btn btn-success pull-right">
+    </form>
+    </div>
+</body>
+</html>
